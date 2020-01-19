@@ -3,10 +3,7 @@ FROM kalilinux/kali-linux-docker:latest
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm-256color
 
-RUN rm -fR /var/lib/apt/ && \
-    apt clean && \
-    apt update -y && \
-    apt install -y software-properties-common kali-linux-full --fix-missing && \
+RUN rm -fR /var/lib/apt/ && apt clean && apt update && apt upgrade -y && apt install -y software-properties-common kali-linux-full --fix-missing && \
     echo 'VERSION_CODENAME=kali-rolling' >> /etc/os-release
 
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
