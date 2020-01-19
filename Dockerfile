@@ -11,7 +11,7 @@ RUN rm -fR /var/lib/apt/ && \
 
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 
-RUN apt install -y git colordiff colortail unzip tmux xterm zsh curl telnet strace ltrace tmate less build-essential wget python3-setuptools python3-pip tor proxychains proxychains4 zstd net-tools bash-completion iputils-tracepath nodejs yarnpkg libssl-dev libxml2-dev libxslt1-dev htop silversearcher-ag git tree ranger rename manpages-dev peco vim gcc clang clang-tools cmake automake ninja-build build-essential global python3-flake8* python3-virtualenv autoconf pkg-config mlocate
+RUN apt install -y git colordiff colortail unzip tmux xterm zsh curl telnet strace ltrace tmate less build-essential wget python3-setuptools python3-pip tor proxychains proxychains4 zstd net-tools bash-completion iputils-tracepath nodejs yarnpkg libssl-dev libxml2-dev libxslt1-dev htop silversearcher-ag git tree ranger rename manpages-dev peco vim gcc clang clang-tools cmake automake ninja-build build-essential global python3-flake8* python3-virtualenv autoconf pkg-config mlocate x11-apps xauth
 
 RUN git clone https://github.com/danielmiessler/SecLists /usr/share/seclists
 
@@ -97,5 +97,7 @@ RUN echo "alias vi='vim'" >> /root/.bashrc
 
 # for proxy chains with TOR, run $ service tor start
 WORKDIR /root
+ENV DISPLAY=$DISPLAY
+RUN touch /root/.Xauthority
 
 CMD ["/bin/bash", "--init-file", "/etc/profile"]
