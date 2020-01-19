@@ -60,7 +60,7 @@ _Borrowed **heavily** from [XaviTorello](https://github.com/XaviTorello/kali-ful
 - x11-apps
 - xauth
 
-### Bonus vimrc and bash aliases
+### Bonus Vimrc and Bash Aliases
 
 - A basic `vimrc` is included, which contains some simple, but (in my opinion) nice-to-haves, as well as a few simple `ls` related aliases
 
@@ -78,7 +78,7 @@ If any changes are made to the Dockerfile, and you want to rebuild the image:
 $ ./scripts/rebuild.sh
 ```
 
-## Launching the Docker image
+## Launching the Kali Linux Docker Image
 
 ```sh
 $ ./scripts/run.sh
