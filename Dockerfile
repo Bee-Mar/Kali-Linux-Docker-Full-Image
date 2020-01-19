@@ -3,12 +3,12 @@ FROM kalilinux/kali-linux-docker:latest
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm-256color
 
-RUN rm -fR /var/lib/apt/ && apt clean && apt update && apt upgrade -y && apt install -y software-properties-common kali-linux-full --fix-missing && \
+RUN rm -fR /var/lib/apt/ && apt clean && apt update && apt upgrade -y && apt install -y software-properties-common kali-linux-full kali-linux kali-linux-wireless kali-linux-top10 --fix-missing && \
     echo 'VERSION_CODENAME=kali-rolling' >> /etc/os-release
 
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 
-RUN apt install -y git colordiff colortail unzip tmux xterm zsh curl telnet strace ltrace tmate less build-essential wget python3-setuptools python3-pip tor proxychains proxychains4 zstd net-tools bash-completion iputils-tracepath nodejs yarnpkg libssl-dev libxml2-dev libxslt1-dev htop silversearcher-ag git tree ranger rename manpages-dev peco vim gcc clang clang-tools cmake automake ninja-build build-essential global python3-flake8* python3-virtualenv autoconf pkg-config mlocate x11-apps xauth
+RUN apt install -y git colordiff colortail unzip tmux xterm zsh curl telnet strace ltrace tmate less build-essential wget python3-setuptools python3-pip tor proxychains proxychains4 zstd net-tools bash-completion iputils-tracepath nodejs yarnpkg libssl-dev libxml2-dev libxslt1-dev htop silversearcher-ag git tree ranger rename manpages-dev peco vim gcc clang clang-tools cmake automake ninja-build build-essential global python3-flake8* python3-virtualenv autoconf pkg-config mlocate x11-apps xauth firefox-esr gedit goaccess
 
 RUN git clone https://github.com/danielmiessler/SecLists /usr/share/seclists
 
@@ -92,7 +92,8 @@ RUN echo "PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\
 RUN echo "alias r='ranger'" >> /root/.bashrc
 RUN echo "alias vi='vim'" >> /root/.bashrc
 
-# for proxy chains with TOR, run $ service tor start
+# FYI: for proxy chains with TOR, run $ service tor start
+
 WORKDIR /root
 ENV DISPLAY=$DISPLAY
 RUN touch /root/.Xauthority
